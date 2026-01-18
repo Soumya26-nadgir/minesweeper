@@ -19,9 +19,12 @@ A stunning, modernized version of the classic Minesweeper game built with **Reac
   - **Screen Shake**: Visceral impact feedback when a mine is triggered.
   - **Confetti**: Celebratory effects upon winning.
   - **Animations**: Pop-in animations for revealing cells.
+- **Interactive Overlays**:
+  - **Game Over**: Witty puns and humor to lighten the mood when you lose.
+  - **Victory**: Detailed stats showing your completion time.
 - **Sound Effects**: Audio feedback for clicks, reveals, flags, game over, and winning.
 - **Responsive Design**: Playable on various screen sizes with scrollable boards for larger levels.
-- **Timer**: Accurate, drift-free timer tracking gameplay duration.
+- **Timer**: Accurate, drift-free timer display (MM:SS) tracking gameplay duration.
 
 ## 🛠️ Tech Stack
 
@@ -115,4 +118,4 @@ The theme is built using CSS variables in `src/index.css`. You can easily tweak 
 
 ## 📄 License
 
-This project is open-source 
+This project is open-source
