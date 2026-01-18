@@ -1,0 +1,96 @@
+.explosion-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.shockwave {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  border: 50px solid rgba(255, 255, 255, 0.8);
+  box-shadow: 0 0 50px rgba(255, 200, 100, 0.6);
+  opacity: 0;
+  animation: shockwave-anim 0.8s ease-out forwards;
+}
+
+.flash {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: white;
+  opacity: 0;
+  animation: flash-anim 0.5s ease-out forwards;
+}
+
+.fireball {
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: radial-gradient(circle, #fff 10%, #fbbf24 30%, #ef4444 60%, transparent 80%);
+  opacity: 0.9;
+  animation: fireball-anim 1s ease-out forwards;
+  box-shadow: 0 0 100px rgba(239, 68, 68, 0.8);
+}
+
+.debris {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background-color: #fbbf24;
+  border-radius: 50%;
+  opacity: 0;
+  animation: debris-anim 1s ease-out forwards;
+}
+
+.d1 { top: 50%; left: 50%; --x: -200px; --y: -200px; animation-delay: 0.1s; }
+.d2 { top: 50%; left: 50%; --x: 200px; --y: -150px; animation-delay: 0.1s; background-color: #ef4444; }
+.d3 { top: 50%; left: 50%; --x: -150px; --y: 200px; animation-delay: 0.1s; background-color: #f87171; }
+.d4 { top: 50%; left: 50%; --x: 200px; --y: 200px; animation-delay: 0.1s; background-color: #fbbf24; }
+.d5 { top: 50%; left: 50%; --x: 0px; --y: -300px; animation-delay: 0.1s; width: 15px; height: 15px; }
+.d6 { top: 50%; left: 50%; --x: 0px; --y: 300px; animation-delay: 0.1s; width: 15px; height: 15px; }
+
+@keyframes shockwave-anim {
+  0% { transform: scale(0.1); opacity: 1; border-width: 50px; }
+  100% { transform: scale(20); opacity: 0; border-width: 0px; }
+}
+
+@keyframes flash-anim {
+  0% { opacity: 0.8; }
+  100% { opacity: 0; }
+}
+
+@keyframes fireball-anim {
+  0% { width: 10px; height: 10px; opacity: 1; }
+  50% { width: 800px; height: 800px; opacity: 0.8; }
+  100% { width: 1200px; height: 1200px; opacity: 0; }
+}
+
+@keyframes debris-anim {
+  0% { transform: translate(0, 0) scale(1); opacity: 1; }
+  100% { transform: translate(var(--x), var(--y)) scale(0); opacity: 0; }
+}
+
+/* Screen shake helper class to be triggered on body/app */
+.shake-screen {
+  animation: shake 0.5s cubic-bezier(.36,.07,.19,.97) both;
+}
+
+@keyframes shake {
+  10%, 90% { transform: translate3d(-4px, 0, 0); }
+  20%, 80% { transform: translate3d(6px, 0, 0); }
+  30%, 50%, 70% { transform: translate3d(-10px, 0, 0); }
+  40%, 60% { transform: translate3d(10px, 0, 0); }
+}

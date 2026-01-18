@@ -1,0 +1,52 @@
+:root {
+  font-family: "Outfit", Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  --app-bg: #020617;
+  --text: #e2e8f0;
+  --surface: #0f172a;
+  --surface-highlight: #1e293b;
+  --btn-color: #3b82f6;
+  --btn-active: #2563eb;
+  --btn-text: #ffffff;
+  --cell-size: 2.5rem;
+  --cell-closed-bg: #1e293b;
+  --cell-opened-bg: #0b101b;
+  --cell-border-color: #334155;
+
+  /* Number Colors */
+  --one: #60a5fa; /* Blue 400 */
+  --two: #4ade80; /* Green 400 */
+  --three: #f87171; /* Red 400 */
+  --four: #a78bfa; /* Purple 400 */
+  --five: #fbbf24; /* Amber 400 */
+  --six: #22d3ee; /* Cyan 400 */
+  --seven: #e879f9; /* Fuchsia 400 */
+  --eight: #f472b6; /* Pink 400 */
+
+  --red: #ef4444;
+  --green: #22c55e;
+
+  background-color: var(--app-bg);
+  color: var(--text);
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+button {
+  font-family: inherit;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  place-items: center;
+  min-width: 380px;
+  min-height: 100vh;
+  min-height: 100vh;
+  overflow: auto;
+}

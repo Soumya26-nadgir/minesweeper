@@ -1,0 +1,213 @@
+#root {
+  width: 100%;
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 1rem;
+  box-sizing: border-box;
+  overflow: auto;
+}
+
+.game {
+  padding: 2rem;
+  background-color: var(--surface);
+  border-radius: 1.5rem;
+  box-shadow: 
+    0 25px 50px -12px rgba(0, 0, 0, 0.5),
+    0 0 0 1px rgba(255, 255, 255, 0.05);
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 1.5rem;
+  width: max-content;
+  max-width: 100%;
+}
+
+.board {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  background-color: var(--app-bg);
+  padding: 4px;
+  border-radius: 8px;
+  box-shadow: inset 0 2px 4px rgba(0,0,0,0.5);
+  margin: 0 auto;
+}
+
+.row {
+  display: flex;
+  gap: 2px;
+}
+
+.cell {
+  width: var(--cell-size);
+  height: var(--cell-size);
+  background-color: var(--cell-closed-bg);
+  border-radius: 4px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  user-select: none;
+  font-weight: 700;
+  font-size: calc(var(--cell-size) * 0.6);
+  position: relative;
+  overflow: hidden;
+}
+
+.cell:not(.opened):hover {
+  background-color: var(--surface-highlight);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+  z-index: 10;
+}
+
+.cell.opened {
+  background-color: var(--cell-opened-bg);
+  cursor: default;
+  box-shadow: inset 0 2px 4px rgba(0,0,0,0.3);
+}
+
+
+
+.flag {
+  font-size: 0.6em;
+  filter: drop-shadow(0 2px 2px rgba(0,0,0,0.5));
+}
+
+.cell img.icon {
+  width: 70%;
+  height: 70%;
+  filter: drop-shadow(0 0 8px rgba(239, 68, 68, 0.5));
+}
+
+/* Number colors */
+.cell.one { color: var(--one); text-shadow: 0 0 10px rgba(96, 165, 250, 0.3); }
+.cell.two { color: var(--two); text-shadow: 0 0 10px rgba(74, 222, 128, 0.3); }
+.cell.three { color: var(--three); text-shadow: 0 0 10px rgba(248, 113, 113, 0.3); }
+.cell.four { color: var(--four); }
+.cell.five { color: var(--five); }
+.cell.six { color: var(--six); }
+.cell.seven { color: var(--seven); }
+.cell.eight { color: var(--eight); }
+
+/* Header */
+header {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--surface-highlight);
+  margin-bottom: 0.5rem;
+  gap: 1rem;
+}
+
+.header-label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1.1rem;
+  color: var(--text);
+  white-space: nowrap;
+}
+
+.header-label:last-child {
+  justify-content: flex-end;
+}
+
+.header-icon {
+  width: 1.5rem;
+  height: 1.5rem;
+  filter: invert(0.9);
+}
+
+.header-buttons button {
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  border: 1px solid var(--surface-highlight);
+  background: transparent;
+  color: var(--text);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.header-buttons button:hover {
+  background: var(--surface-highlight);
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+/* Level Selector */
+.select-level {
+  display: flex;
+  gap: 0.5rem;
+  padding: 0.25rem;
+  background: var(--app-bg);
+  border-radius: 8px;
+  list-style: none;
+  margin: 0;
+}
+
+.select-level li {
+  flex: 1;
+}
+
+.select-level button {
+  width: 100%;
+  padding: 0.5rem 1.5rem;
+  border-radius: 6px;
+  border: none;
+  background: transparent;
+  color: var(--text);
+  opacity: 0.6;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-transform: capitalize;
+  font-weight: 600;
+}
+
+.select-level button:hover {
+  opacity: 1;
+  background: var(--surface-highlight);
+}
+
+.select-level button.active {
+  opacity: 1;
+  background: var(--btn-color);
+  color: #fff;
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+}
+
+/* Animations */
+@keyframes pop {
+  0% { transform: scale(0.8); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.cell.opened span {
+  animation: pop 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* Mine explosion effect override */
+.cell.red {
+  background-color: rgba(239, 68, 68, 0.2) !important;
+  box-shadow: inset 0 0 20px rgba(239, 68, 68, 0.4);
+  border-color: var(--red);
+}
+
+.cell.green {
+   background-color: rgba(34, 197, 94, 0.2) !important;
+   border-color: var(--green);
+}
+
+.win {
+  color: var(--green);
+  text-shadow: 0 0 10px rgba(74, 222, 128, 0.5);
+}
+
+.game-over {
+  color: var(--red);
+  text-shadow: 0 0 10px rgba(239, 68, 68, 0.5);
+}
