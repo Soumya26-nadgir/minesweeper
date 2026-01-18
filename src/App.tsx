@@ -1,4 +1,3 @@
-
 import ReactConfetti from "react-confetti";
 import "./App.css";
 import Board from "./components/board";
@@ -7,6 +6,9 @@ import SelectLevel from "./components/selectLevel";
 import useMinesweeperGame from "./hooks/useMinesweeperGames";
 import Explosion from "./components/explosion";
 import clsx from "clsx";
+
+import GameOverOverlay from "./components/gameOverOverlay";
+import GameWonOverlay from "./components/gameWonOverlay";
 
 function App() {
   const {
@@ -45,7 +47,19 @@ function App() {
         <SelectLevel level={level} changeLevel={changeLevel} />
         {isGameWin && <ReactConfetti />}
       </div>
-      {isGameOver && <Explosion />}
+      {isGameOver && (
+        <>
+          <Explosion />
+          <GameOverOverlay isVisible={isGameOver} onRestart={restartGame} />
+        </>
+      )}
+      {isGameWin && (
+        <GameWonOverlay
+          isVisible={isGameWin}
+          onRestart={restartGame}
+          timeTaken={timeDiff}
+        />
+      )}
     </>
   );
 }

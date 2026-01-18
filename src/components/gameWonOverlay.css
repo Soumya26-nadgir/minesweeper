@@ -1,0 +1,83 @@
+.game-won-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+  backdrop-filter: blur(3px);
+  animation: fadeIn 0.5s ease-out;
+}
+
+.game-won-content {
+  background-color: var(--surface);
+  padding: 2.5rem;
+  border-radius: 1rem;
+  text-align: center;
+  border: 2px solid var(--green);
+  box-shadow: 0 0 30px rgba(34, 197, 94, 0.3);
+  max-width: 90%;
+  width: 340px;
+  animation: popIn 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.game-won-content h2 {
+  color: var(--green);
+  margin-top: 0;
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+  text-shadow: 0 0 10px rgba(34, 197, 94, 0.4);
+}
+
+.win-msg {
+  color: var(--text);
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+  font-weight: 500;
+}
+
+.time-stat {
+  color: var(--text);
+  opacity: 0.8;
+  font-size: 1rem;
+  margin-bottom: 2rem;
+  font-family: monospace;
+  background: var(--surface-highlight);
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  display: inline-block;
+}
+
+.game-won-content button {
+  width: 100%;
+  padding: 0.75rem;
+  font-size: 1.1rem;
+  background-color: var(--green);
+  color: #fff;
+  border: none;
+  font-weight: 700;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+}
+
+.game-won-content button:hover {
+  filter: brightness(1.1);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 8px rgba(0,0,0,0.3);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes popIn {
+  0% { transform: scale(0.8); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
